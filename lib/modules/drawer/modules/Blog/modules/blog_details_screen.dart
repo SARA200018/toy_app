@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../App/color/color.dart';
+import '../../../../../Utils/color/color.dart';
+
 
 class DetailsBlogScreen extends StatelessWidget {
   const DetailsBlogScreen({super.key});

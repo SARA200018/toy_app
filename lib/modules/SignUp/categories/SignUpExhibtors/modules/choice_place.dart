@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:toyaapp/App/components/components.dart';
 import 'package:toyaapp/modules/SignUp/categories/SignUpExhibtors/modules/full_screen.dart';
-import '../../../../../App/color/color.dart';
+import '../../../../../Utils/color/color.dart';
+import '../../../../../Utils/components/components.dart';
+import '../../../../../Utils/components/radip_button.dart';
 import 'choice_package.dart';
 
 class ChoicePlace extends StatelessWidget {
@@ -42,20 +43,18 @@ class ChoicePlace extends StatelessWidget {
                     NavigatorTo(context, FullScreen());
                   },
                   child: Image.asset('assets/images/map.png')),
-              Container(
-                width: 300,
-                height: 60,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                  color: gray2,
+              RadioWidget(),
+              Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 20
                 ),
-              ),
-              Center(
-                child: D_MaterialButton(
-                    onPressed: (){
-                      NavigatorTo(context, (ChoicePackage()));
-                    },
-                    text: 'تسجيل'
+                child: Center(
+                  child: D_MaterialButton(
+                      onPressed: (){
+                        NavigatorTo(context, (ChoicePackage()));
+                      },
+                      text: 'تسجيل'
+                  ),
                 ),
               ),
             ],

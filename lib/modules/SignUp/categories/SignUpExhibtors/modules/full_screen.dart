@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:toyaapp/App/components/components.dart';
 
 class FullScreen extends StatelessWidget {
   @override

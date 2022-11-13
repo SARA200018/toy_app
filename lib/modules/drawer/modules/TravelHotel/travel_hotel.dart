@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toyaapp/modules/drawer/modules/TravelHotel/widgets/gridItemHotel.dart';
 
-import '../../../../App/color/color.dart';
+import '../../../../Utils/color/color.dart';
+
 
 class TravelHotel extends StatelessWidget {
 
@@ -51,6 +51,27 @@ class TravelHotel extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+  Widget gridItemHotel(){
+    return Material(
+      elevation: 2,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      borderRadius: BorderRadius.circular(12),
+      child: Stack(
+        children: [
+          Center(
+            child: Column(
+              children: [
+                Image.asset('assets/images/company.png'),
+                Text('اسم الشركة',style: TextStyle(
+                    fontSize: 18
+                ),)
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../App/color/color.dart';
+import 'package:flutter/services.dart';
+import '../../Utils/color/color.dart';
 import '../home/home_screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     _navigatetohome();
   }
   _navigatetohome()async{
@@ -42,7 +44,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   color: purple,
                   fontWeight: FontWeight.bold,
                 ),),
-                const Text('لألعاب الأطفال'),
+                 Text('لألعاب الأطفال',style: TextStyle(
+                  fontSize: 20,
+                  color: offwhite
+                ),),
               ],
             ),
           ),

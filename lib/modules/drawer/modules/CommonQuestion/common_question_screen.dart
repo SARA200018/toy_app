@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import '../../../../App/color/color.dart';
+import '../../../../Utils/color/color.dart';
 import 'modules/expand_list.dart';
 
 class CommonQuestionScreen extends StatelessWidget {

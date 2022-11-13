@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toyaapp/App/components/components.dart';
 
-import '../../../../App/color/color.dart';
+import '../../../../Utils/color/color.dart';
+import '../../../../Utils/components/components.dart';
 
 class CallUsScreen extends StatelessWidget {
   CallUsScreen({Key? key}) : super(key: key);

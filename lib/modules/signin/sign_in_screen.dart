@@ -1,10 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:toyaapp/App/color/color.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:toyaapp/modules/SignUp/sign_up_screen.dart';
-
-import '../../App/components/components.dart';
+import '../../Utils/color/color.dart';
+import '../../Utils/components/components.dart';
 
 class SignInScreen extends StatelessWidget {
 
@@ -17,53 +17,48 @@ class SignInScreen extends StatelessWidget {
       body: Directionality(
         textDirection: TextDirection.rtl,
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: SafeArea(
             child:  Column(
                 children: [
                 Container(
                   width: double.infinity,
                   height: 250.h,
-                  color: purple,
-                  child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          InkWell(
-                            onTap: (){},
-                              child: SvgPicture.asset('assets/images/back.svg')),
-                          Center(
-                            child: Column(
-                              children: [
-                                SizedBox(
-                                    height: 50.h,
-                                    width: 50.w,
-                                    child: const Image(
-                                      image: AssetImage('assets/images/layer.png'),
-                                      fit: BoxFit.cover,
-                                    )),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                const Text(
-                                  'معرض الرياض',
-                                  style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                const Text('لألعاب الأطفال',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w200)),
-                              ],
+                  color: purple1,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IconButton(onPressed: (){
+                        Navigator.pop(context);
+                      }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,size: 25,)),
+                      Center(
+                        child: Column(
+                          children: [
+                            SizedBox(
+                                height: 75.h,
+                                width: 100.w,
+                                child: const Image(
+                                  image: AssetImage('assets/images/layer.png'),
+                                  fit: BoxFit.contain,
+                                )),
+                            const Text(
+                              'معرض الرياض',
+                              style: TextStyle(
+                                fontSize: 22,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-
-                        ],
-                      )),
+                             Text('لألعاب الأطفال',
+                                style: TextStyle(
+                                    fontSize: 18,
+                                    color: gray3,
+                                    )),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -72,35 +67,34 @@ class SignInScreen extends StatelessWidget {
                     children: [
                       SizedBox(height: 20.h,),
                       Text('تسجيل دخول',style: TextStyle(
-                        color: Colors.purple,
+                        color: purple1,
                         fontSize: 18
                       ),),
-                      SizedBox(height: 10,),
+                      SizedBox(height: 10.h,),
                       D_TextFromField(
                           controller: userName,
                           label: 'البريد الالكتروني',
                           prefixIcon: Icons.person,
                           prefixIconColor: Colors.purple,
-                          
                           keyboardType: TextInputType.emailAddress
                       ),
-                      SizedBox(height: 20,),
+                      SizedBox(height: 10.h,),
                       D_TextFromField(
                           controller: password,
                           label: 'كلمة المرور',
                           prefixIcon: Icons.lock,
                           prefixIconColor: Colors.purple,
                           keyboardType: TextInputType.emailAddress,
-
                       ),
                       SizedBox(height: 20,),
                       Row(
                         children: [
                           Checkbox(
-                              activeColor: Colors.purple,
+                              activeColor: purple,
+                              focusColor: HexColor('#1BBAA2'),
                               value: true, onChanged:(value){} ),
                           Text('تذكرني',style: TextStyle(
-                            fontSize: 18
+                            fontSize: 20
                           ),),
                         ],
                       ),
@@ -114,10 +108,18 @@ class SignInScreen extends StatelessWidget {
                       SizedBox(height: 10,),
                       Center(
                         child: TextButton(
-                            onPressed: (){},
+                            onPressed: (){
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)
+                                  ),
+                                  context: context,
+                                  builder: (context)=>buildSheet(context));
+                            },
                             child:Text('نسيت كلمة المرور؟',style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black
+                              color: Colors.black,
                             ),)
                         ),
                       ),
@@ -138,11 +140,60 @@ class SignInScreen extends StatelessWidget {
                                   fontWeight: FontWeight.bold
                               ),)
                           ),
-                      ],)
-
+                      ],
+                      )
                     ],
                   ),
                 ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+  Widget buildSheet(context){
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Padding(
+        padding:  EdgeInsets.only(
+            top: 10,
+            right: 10,
+            left: 10,
+            bottom:MediaQuery.of(context).viewInsets.bottom
+        ),
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Container(
+            height: 250.h,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    IconButton(onPressed: (){
+                      Navigator.of(context).pop();
+                    }, icon: Icon(Icons.close)),
+                  ],
+                ),
+                Text('نسيت كلمة المرور؟',style: TextStyle(
+                    fontSize: 25
+                ),
+                ),
+                SizedBox(height: 20,),
+                D_TextFromField(
+                    controller: userName,
+                    label: 'البريد الالكتروني',
+                    keyboardType: TextInputType.emailAddress,
+                    prefixIcon: Icons.email
+                ),
+                SizedBox(height: 20,),
+                D_MaterialButton(
+                    text: 'ارسال',
+                    onPressed: (){
+
+                    }),
               ],
             ),
           ),

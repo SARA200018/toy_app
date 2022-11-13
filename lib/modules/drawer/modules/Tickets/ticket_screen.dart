@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:toyaapp/modules/drawer/modules/Tickets/widgets/buildActivityItem.dart';
-import '../../../../App/color/color.dart';
-import '../../../../App/components/components.dart';
+
+import '../../../../Utils/color/color.dart';
+import '../../../../Utils/components/components.dart';
 
 class TicketScreen extends StatelessWidget {
   @override
@@ -40,7 +40,7 @@ class TicketScreen extends StatelessWidget {
                 Center(
                   child: D_MaterialButtonwithIcon(
                     onPressed: () {},
-                    image: 'assets/images/comm.png',
+                    icon: Icons.card_travel,
                     text: 'حجز تذكرة',
                   ),
                 ),
@@ -83,6 +83,76 @@ class TicketScreen extends StatelessWidget {
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+  Widget buildActivityItem() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        elevation: 2,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        borderRadius: BorderRadius.circular(16.0),
+        child: Stack(
+          children: [
+            // Positioned(
+            //     left: 0,
+            //     top: 0,
+            //     child: CircleAvatar(backgroundColor: Colors.purple,radius: 30,)),
+            SizedBox(
+              height: 300.h,
+              width: 200.w,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('انطلاق الفعاليات',style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),),
+                    Column(
+                      children: const[
+                        Text(
+                          '1.افتتاح الاجنحه وفتح الابواب امام الزوار',
+                          maxLines: 2,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          '2.افتتاح الاجنحه وفتح الابواب امام الزوار',
+                          maxLines: 2,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          '3.افتتاح الاجنحه وفتح الابواب امام الزوار',
+                          maxLines: 2,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          '4.افتتاح الاجنحه وفتح الابواب امام الزوار',
+                          maxLines: 2,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          '5.افتتاح الاجنحه وفتح الابواب امام الزوار',
+                          maxLines: 2,
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

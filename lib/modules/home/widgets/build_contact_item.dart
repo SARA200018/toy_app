@@ -2,30 +2,35 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:toyaapp/Utils/color/color.dart';
 Widget buildContactItem(){
   return Column(
     children: [
       Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 10),
         child: CircleAvatar(
-          radius: 50,
+          radius: 50.r,
           backgroundImage: AssetImage('assets/images/pexels.jpg'),
         ),
       ),
-      SizedBox(height: 5.h,),
-      Text('أحمد محمد',style: TextStyle(fontWeight: FontWeight.bold),),
-      Text('مدير مبيعات'),
-      SizedBox(height: 5.h,),
+      Expanded(
+        child: Column(
+          children: [
+            Text('أحمد محمد',style: TextStyle(fontWeight: FontWeight.bold),),
+            Text('مدير مبيعات',style: TextStyle(fontSize: 12),),
+          ],
+        ),
+      ),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextButton(
               onPressed: (){},
-              child: SvgPicture.asset('assets/images/letter.svg')
+              child: Icon(Icons.email_rounded,color: purple,)
           ),
           TextButton(
               onPressed: (){},
-              child: SvgPicture.asset('assets/images/phone.svg')
+              child: Icon(Icons.phone,color: purple,)
           ),
         ],
       ),

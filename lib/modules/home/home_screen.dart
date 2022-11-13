@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hexcolor/hexcolor.dart';
-import 'package:toyaapp/App/color/color.dart';
-import 'package:toyaapp/App/navigation/drawer_navigation.dart';
 import 'package:toyaapp/modules/home/widgets/build_contact_item.dart';
 import 'package:toyaapp/modules/home/widgets/build_list_Item.dart';
 import 'package:toyaapp/modules/home/widgets/header_widget.dart';
-import '../../App/components/components.dart';
+
+import '../../Utils/color/color.dart';
+import '../../Utils/components/components.dart';
+import '../../Utils/navigation/drawer_navigation.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: NavigationDrawer(),
+        endDrawer: NavigationDrawer(),
         body: Directionality(
           textDirection: TextDirection.rtl,
           child: SingleChildScrollView(
@@ -30,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                           width: double.infinity,
                           height: 230.h,
                           color: purple1,
-                          child: headerWidget()),
+                          child: headerWidget(context)),
                       SizedBox(
                         height: 50.h,
                       ),
@@ -64,28 +63,29 @@ class HomeScreen extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        const Text(
+                                         Text(
                                           'معرض الرياض',
                                           style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
+                                              fontSize: 18.sp,
+                                              fontWeight: FontWeight.bold
+                                          ),
                                         ),
                                         SizedBox(
                                           height: 5.h,
                                         ),
-                                        const Text(
+                                         Text(
                                           'لألعاب الأطفال',
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontWeight: FontWeight.w300,
-                                              fontSize: 20),
+                                              fontSize: 20.sp),
                                         ),
-                                        const Text(
+                                         Text(
                                           'هاهو معرض الرياض لألعاب الأطفال قد انطلق\n وهو يعدّ من أهم وامتع المعارض التي تقدمها\nالمملكة العربية السعودية',
                                           style: TextStyle(
                                             color: Colors.grey,
-                                            fontSize: 15,
+                                            fontSize: 12.sp,
                                           ),
                                           maxLines: 3,
                                           overflow: TextOverflow.ellipsis,
@@ -95,8 +95,8 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                   Container(
                                     margin: EdgeInsetsDirectional.only(
-                                      start: 50.h,
-                                      end: 50.h,
+                                      start: 50.w,
+                                      end: 50.w,
                                       bottom: 50.h
                                     ),
                                     child: D_MaterialButton(
@@ -121,11 +121,15 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               Text(
                                 'المساعدة',
-                                style: TextStyle(color: purple, fontSize: 20),
+                                style: TextStyle(
+                                    color: purple,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold
+                                ),
                               ),
-                              const Text(
-                                'سيسعد فريق المبيعات لدينا بالإجابة على أي \nأسئلة قد تكون لديك ومساعدتك في التسجيل',
-                                style: TextStyle(fontSize: 18),
+                               Text(
+                                'سيسعد فريق المبيعات لدينا بالإجابة على أي أسئلة قد تكون لديك ومساعدتك في التسجيل',
+                                style: TextStyle(fontSize: 12),
                               )
                             ]),
                       ),
@@ -149,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(20),
                                   child: SizedBox(
                                     width: 170.w,
-                                    height: 234.h,
+                                    height: 250,
                                     child: buildContactItem(),
                                   ),
                                 ),
@@ -164,13 +168,34 @@ class HomeScreen extends StatelessWidget {
                          child: Text(
                              'جديد المدونة',
                            style: TextStyle(
-                             color: purple
+                             color: purple,
+                             fontSize: 20,
+                             fontWeight: FontWeight.bold
                            ),
                          )),
                      Stack(
+                       alignment: AlignmentDirectional.bottomStart,
                        children: [
-                         Image(image: AssetImage('assets/images/writting.png')),
-
+                         Opacity(
+                             opacity: 0.8,
+                             child: Image(image: AssetImage('assets/images/writting.png'))),
+                         Positioned(
+                           bottom: 30,
+                           right: 20,
+                           child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               Text('معرض الرياض لألعاب الاطفال',style: TextStyle(
+                                 fontSize: 20,
+                                 color: Colors.white
+                               ),),
+                               Text('1/11/2022',style: TextStyle(
+                                 fontSize: 16,
+                                 color: gray
+                               ),)
+                             ],
+                           ),
+                         )
                        ],
                      )
                     ],
@@ -178,7 +203,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 Positioned(
                   top: 200.h,
-                  height: 112.h,
+                  height: 112,
                   left: 0,
                   right: 0,
                   child: ListView.separated(

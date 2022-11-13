@@ -1,8 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:toyaapp/modules/drawer/modules/Profile/widgets/headerWidget.dart';
 
-import '../../../../App/color/color.dart';
+import '../../../../Utils/color/color.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
         child: Scaffold(
           body: Column(
             children:  [
-            headerWidget(),
+            HeaderWidget(),
             TabBar(
               indicatorColor: purple,
               automaticIndicatorColorAdjustment:false,
@@ -27,9 +29,9 @@ class ProfileScreen extends StatelessWidget {
                 Tab(
                     child: Row(
                       children:
-                      const [
+                       [
                         Icon(Icons.credit_card,size: 16,),
-                        SizedBox(width: 5,),
+                        SizedBox(width: 5.w,),
                         Text( 'التذاكر',style: TextStyle(
                             fontSize: 18
                         )),
@@ -40,9 +42,9 @@ class ProfileScreen extends StatelessWidget {
                 Tab(
                   child: Row(
                       children:
-                      const [
-                        Icon(Icons.person,size: 16),
-                        SizedBox(width: 5,),
+                       [
+                        Icon(Icons.person,size: 18),
+                        //SizedBox(width: 5.w,),
                         Text( 'الملف الشخصي',style: TextStyle(
                           fontSize: 18
                         ),),
@@ -71,53 +73,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget headerWidget(){
-    return Container(
-      width: double.infinity,
-      height: 200.h,
-      color: purple1,
-      child: Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 20,
-            horizontal: 8
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
-                  Spacer(),
-                  IconButton(onPressed: (){}, icon: Image(image: AssetImage('assets/images/Component 21 – 2.png'),),),
-                ],
-              ),
-              Center(
-                child: Column(
-                  children: [
-                    Container(
-                      width: 80,
-                      height: 80,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(40),
-                        border: Border.all(color: Colors.white),
-                        image: const DecorationImage(
-                            image: AssetImage(
-                                'assets/images/Component 6 – 4.png')
-                        ),
-                      ),
-                    ),
-                    const Text(
-                      'الملف الشخصي',
-                      style: TextStyle(
-                          color: Colors.white, fontSize: 18),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )),
-    );
-  }
+
 
   Widget profilePart(){
     return Column(
@@ -129,8 +85,8 @@ class ProfileScreen extends StatelessWidget {
               color: purple,
               size: 16,
             ),
-            const SizedBox(
-              width: 5,
+             SizedBox(
+              width: 5.w,
             ),
             const Text(
               'محمد أحمد',
@@ -148,8 +104,8 @@ class ProfileScreen extends StatelessWidget {
               color: purple,
               size: 16,
             ),
-            const SizedBox(
-              width: 5,
+             SizedBox(
+              width: 5.w,
             ),
             const Text(
               '+966123456789',
@@ -167,8 +123,8 @@ class ProfileScreen extends StatelessWidget {
               color: purple,
               size: 16,
             ),
-            const SizedBox(
-              width: 5,
+             SizedBox(
+              width: 5.w,
             ),
             const Text(
               '+Mail@Website.com',
@@ -191,7 +147,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             const Text(
               'السعودية - الرياض - أرض المعارض',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 18),
             )
           ],
         ),
@@ -214,17 +170,19 @@ class ProfileScreen extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Container(
-          height: 50,
-          width: 50,
+          height: 40.h,
+          width: 40.w,
           decoration: BoxDecoration(
             color: gray2,
             borderRadius: BorderRadius.circular(8),
           ),
-          child: Image(
-            image: AssetImage('assets/images/comm.png'),
-            color: purple,
-          )),
-      SizedBox(width: 10,),
+          child: Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: SvgPicture.asset('assets/images/icon/cart.svg',),
+          ),
+
+          ),
+      SizedBox(width: 10.w,),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

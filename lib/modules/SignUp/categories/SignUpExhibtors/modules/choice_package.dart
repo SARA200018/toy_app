@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:toyaapp/App/components/components.dart';
 import 'package:toyaapp/modules/SignUp/categories/SignUpExhibtors/modules/full_screen.dart';
-import 'package:toyaapp/modules/SignUp/categories/SignUpExhibtors/modules/widgets/gridItem.dart';
-import '../../../../../App/color/color.dart';
+import '../../../../../Utils/color/color.dart';
+import '../../../../../Utils/components/components.dart';
 
 class ChoicePackage extends StatelessWidget {
   const ChoicePackage({super.key});
@@ -57,6 +56,35 @@ class ChoicePackage extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+  Widget gridItemPackage(int index){
+    return Material(
+      elevation: 2,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        height: 200,
+        child: Stack(
+          children: [
+            Center(
+              child: Column(
+                children: [
+                  Image.asset('assets/images/shepherds.png'),
+                  Text('الراعي الماسي',style: TextStyle(
+                      fontSize: 20
+                  ),)
+                ],
+              ),
+            ),
+            Positioned(
+                left: 5,
+                right: 5,
+                top: 5,
+                child: Text('$index',style: TextStyle(color: gray),))
+          ],
         ),
       ),
     );

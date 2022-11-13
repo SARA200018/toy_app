@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:toyaapp/App/color/color.dart';
+
+import '../color/color.dart';
 
 void NavigatorTo(context, widget) => Navigator.push(
   context,
@@ -123,7 +123,7 @@ Widget D_MaterialButton(
       child: MaterialButton(
         color: HexColor('#911D74'),
         onPressed: onPressed,
-        height: 40,
+        height: 40.h,
         child: Text(
               isUpperCase? text.toUpperCase() : text,
               style: TextStyle(
@@ -158,18 +158,18 @@ Widget D_MaterialButtonwithIcon(
       child: MaterialButton(
         color: HexColor('#911D74'),
         onPressed: onPressed,
-        height: 40,
+        height: 40.h,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('$image',height: 15.h,width: 15.w,),
+            Icon(icon,color: Colors.white,),
             SizedBox(width: 5.w,),
             Text(
               isUpperCase? text.toUpperCase() : text,
               style: TextStyle(
                   color: textColor,
                   fontWeight: FontWeight.w400,
-                  fontSize: 20
+                  fontSize: 16
               ),
             ),
 

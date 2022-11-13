@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:toyaapp/App/color/color.dart';
-import 'package:toyaapp/App/components/components.dart';
 import 'package:toyaapp/modules/drawer/modules/AboutUs/about_us_screen.dart';
 import 'package:toyaapp/modules/drawer/modules/Blog/blog_screen.dart';
 import 'package:toyaapp/modules/drawer/modules/CommonQuestion/common_question_screen.dart';
@@ -14,6 +12,9 @@ import '../../modules/drawer/modules/CallUs/callus_screen.dart';
 import '../../modules/drawer/modules/Tickets/ticket_screen.dart';
 import '../../modules/drawer/modules/shepherds/shepherds.dart';
 import '../../modules/signin/sign_in_screen.dart';
+import '../color/color.dart';
+import '../components/components.dart';
+import '../images/images.dart';
 
 class NavigationDrawer extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -70,57 +71,57 @@ class NavigationDrawer extends StatelessWidget {
                     const SizedBox(height: 5),
                     buildMenuItem(
                       text: 'الرئيسية',
-                      icon: Icons.home,
+                      icon: Images.homeIcon,
                       onClicked: () => selectedItem(context, 0),
                     ),
                     buildMenuItem(
                       text: 'العارضين',
-                      icon: Icons.card_travel,
+                      icon: Images.exhibtorsIcon,
                       onClicked: () => selectedItem(context, 1),
                     ),
                     buildMenuItem(
                       text: 'الرعاة',
-                      icon: Icons.workspaces_outline,
+                      icon: Images.shapIcon,
                       onClicked: () => selectedItem(context, 2),
                     ),
                     buildMenuItem(
                       text: 'التذاكر',
-                      icon: Icons.card_travel,
+                      icon: Images.cartIcon,
                       onClicked: () => selectedItem(context, 3),
                     ),
                     buildMenuItem(
                       text: 'السفر والفنادق',
-                      icon: Icons.airplanemode_active_outlined,
+                      icon: Images.planIcon,
                       onClicked: () => selectedItem(context, 4),
                     ),
                     buildMenuItem(
                       text: 'المدونة',
-                      icon: Icons.pending,
+                      icon: Images.blogIcon,
                       onClicked: () => selectedItem(context, 5),
                     ),
                     buildMenuItem(
                       text: 'من نحن',
-                      icon: Icons.error,
+                      icon: Images.aboutIcon,
                       onClicked: () => selectedItem(context, 6),
                     ),
                     buildMenuItem(
                       text: 'الاسئلة الشائعة',
-                      icon: Icons.question_mark,
+                      icon: Images.askIcon,
                       onClicked: () => selectedItem(context, 7),
                     ),
                     buildMenuItem(
                       text: 'English',
-                      icon: Icons.language,
+                      icon: Images.enIcon,
                       onClicked: () => selectedItem(context, 8),
                     ),
                     buildMenuItem(
                       text: 'اتصل بنا',
-                      icon: Icons.email,
+                      icon: Images.callIcon,
                       onClicked: () => selectedItem(context, 9),
                     ),
                     buildMenuItem(
                       text: 'الملف الشخصي',
-                      icon: Icons.notifications_outlined,
+                      icon: Images.exhibtorsIcon,
                       onClicked: () => selectedItem(context, 10),
                     ),
                     Padding(
@@ -208,7 +209,7 @@ class NavigationDrawer extends StatelessWidget {
     final hoverColor = Colors.white70;
 
     return ListTile(
-      leading: SvgPicture.asset(icon,color: color,),
+      leading: SvgPicture.asset(icon,color: Colors.white,height: 16,width: 16,),
       title: Text(text, style: TextStyle(color: color, fontSize: 18)),
       hoverColor: hoverColor,
       onTap: onClicked,
@@ -292,7 +293,8 @@ class NavigationDrawer extends StatelessWidget {
           child: IconButton(
               onPressed: () {},
               icon: Image(
-                image: AssetImage('assets/images/Vector.png'),
+                color: Colors.white,
+                image: AssetImage('assets/images/twitter.png'),
               )),
         ),
         Container(
@@ -305,7 +307,8 @@ class NavigationDrawer extends StatelessWidget {
           child: IconButton(
               onPressed: () {},
               icon: Image(
-                image: AssetImage('assets/images/Group 1030.png'),
+                image: AssetImage('assets/images/linkedin.png'),
+                  color: Colors.white
               )),
         ),
         Container(
@@ -331,7 +334,8 @@ class NavigationDrawer extends StatelessWidget {
           child: IconButton(
               onPressed: () {},
               icon: Image(
-                image: AssetImage('assets/images/Group 1030.png'),
+                image: AssetImage('assets/images/linkedin.png'),
+                color: Colors.white,
               )),
         ),
       ],

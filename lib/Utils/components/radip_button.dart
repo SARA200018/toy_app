@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../color/color.dart';
 
-class HomeScreen1 extends StatefulWidget {
+class RadioWidget extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
-class _HomeScreenState extends State<HomeScreen1> {
+class _HomeScreenState extends State<RadioWidget> {
   int _selection = 0;
 
  void selectTime(int? timeSelected) {
