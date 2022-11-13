@@ -33,46 +33,49 @@ Widget D_TextFromField({
   TextStyle? styleOutDecoration,
   String? hintText,
   double hintStyleFS = 15,
-  double borderSideWidth = 3,
-  double borderRadiusCircular = 8,
+  double borderSideWidth = 1,
+  double borderRadiusCircular = 5,
   Color? prefixIconColor,
-  IconData? suffixIcon,
+  Widget? suffixIcon,
   Function()? suffixPressed,
   bool isobscureText = false,
   String? InitialValue
 }) =>
-    TextFormField(
-      initialValue: InitialValue,
-      validator: validator,
-      controller: controller,
-      onTap: onTap,
-      onChanged: onChange,
-      onFieldSubmitted: onSubmitted,
-      keyboardType: keyboardType,
-      style: styleOutDecoration,
-      obscureText: isobscureText,
-      decoration: InputDecoration(
-        hintText: hintText,
-        hintStyle: TextStyle(
-          fontSize: hintStyleFS,
-          color: Colors.grey,
-        ),
-        prefixIcon: Icon(
-          prefixIcon,
-          color: prefixIconColor,
-        ),
-        label: Text(label,style: TextStyle(
-          color: Colors.black,
-          fontSize: 18
-        ),),
-        labelStyle: labelStyle,
-        border: OutlineInputBorder(
-          borderSide: BorderSide(width: borderSideWidth, color: Colors.grey),
-          borderRadius: BorderRadius.all(Radius.circular(borderRadiusCircular)),
-        ),
-        suffixIcon: IconButton(
-          onPressed: suffixPressed,
-          icon: Icon(suffixIcon),
+    Container(
+      height: 60,
+      child: TextFormField(
+        initialValue: InitialValue,
+        validator: validator,
+        controller: controller,
+        onTap: onTap,
+        onChanged: onChange,
+        onFieldSubmitted: onSubmitted,
+        keyboardType: keyboardType,
+        style: styleOutDecoration,
+        obscureText: isobscureText,
+
+        decoration: InputDecoration(
+          hintText: hintText,
+          hintStyle: TextStyle(
+            fontSize: hintStyleFS,
+            color: Colors.grey,
+          ),
+          prefixIcon: Icon(
+            prefixIcon,
+            color: purple,
+          ),
+          label: Text(label,style: TextStyle(
+            color: Colors.black,
+            fontSize: 18
+          ),),
+          labelStyle: labelStyle,
+          border: OutlineInputBorder(
+            borderSide: BorderSide(
+                width: borderSideWidth, color: gray1),
+            borderRadius: BorderRadius.all(
+                Radius.circular(borderRadiusCircular)),
+          ),
+          suffixIcon:suffixIcon
         ),
       ),
     );
@@ -142,7 +145,8 @@ Widget D_MaterialButtonwithIcon(
       Color textColor = Colors.white,
       double paddingSpace = 16.0,
       double raduis = 8.0,
-      String? image
+      String? image,
+      IconData? icon,
     }) =>
     Container(
       clipBehavior: Clip.antiAliasWithSaveLayer,

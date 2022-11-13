@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:toyaapp/App/color/color.dart';
 import 'package:toyaapp/App/components/components.dart';
 import 'package:toyaapp/modules/drawer/modules/AboutUs/about_us_screen.dart';
@@ -9,18 +10,16 @@ import 'package:toyaapp/modules/drawer/modules/Profile/profile_screen.dart';
 import 'package:toyaapp/modules/drawer/modules/TravelHotel/travel_hotel.dart';
 import 'package:toyaapp/modules/drawer/modules/exhibitors/exhibitors_screen.dart';
 import 'package:toyaapp/modules/home/home_screen.dart';
+import '../../modules/drawer/modules/CallUs/callus_screen.dart';
 import '../../modules/drawer/modules/Tickets/ticket_screen.dart';
 import '../../modules/drawer/modules/shepherds/shepherds.dart';
 import '../../modules/signin/sign_in_screen.dart';
 
 class NavigationDrawer extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
+
   @override
   Widget build(BuildContext context) {
-    final name = 'Sarah Abs';
-    final email = 'sarah@abs.com';
-    final urlImage =
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80';
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Drawer(
@@ -55,17 +54,16 @@ class NavigationDrawer extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 18,
                           color: Colors.grey,
-                          fontWeight: FontWeight.w200
-                      )),
+                          fontWeight: FontWeight.w200)),
                 ],
               ),
               GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     NavigatorTo(context, SignInScreen());
                   },
-                  child: buildSearchField()),
+                  child: buildLoginField()),
               Container(
-                color:purple2,
+                color: purple2,
                 padding: padding,
                 child: Column(
                   children: [
@@ -87,43 +85,47 @@ class NavigationDrawer extends StatelessWidget {
                     ),
                     buildMenuItem(
                       text: 'التذاكر',
-                      icon: Icons.update,
+                      icon: Icons.card_travel,
                       onClicked: () => selectedItem(context, 3),
                     ),
                     buildMenuItem(
                       text: 'السفر والفنادق',
-                      icon: Icons.account_tree_outlined,
+                      icon: Icons.airplanemode_active_outlined,
                       onClicked: () => selectedItem(context, 4),
                     ),
                     buildMenuItem(
                       text: 'المدونة',
-                      icon: Icons.notifications_outlined,
+                      icon: Icons.pending,
                       onClicked: () => selectedItem(context, 5),
                     ),
                     buildMenuItem(
                       text: 'من نحن',
-                      icon: Icons.notifications_outlined,
+                      icon: Icons.error,
                       onClicked: () => selectedItem(context, 6),
                     ),
                     buildMenuItem(
                       text: 'الاسئلة الشائعة',
-                      icon: Icons.notifications_outlined,
+                      icon: Icons.question_mark,
                       onClicked: () => selectedItem(context, 7),
                     ),
                     buildMenuItem(
                       text: 'English',
-                      icon: Icons.notifications_outlined,
+                      icon: Icons.language,
                       onClicked: () => selectedItem(context, 8),
                     ),
                     buildMenuItem(
                       text: 'اتصل بنا',
-                      icon: Icons.notifications_outlined,
+                      icon: Icons.email,
                       onClicked: () => selectedItem(context, 9),
                     ),
                     buildMenuItem(
                       text: 'الملف الشخصي',
                       icon: Icons.notifications_outlined,
-                      onClicked: () => selectedItem(context, 9),
+                      onClicked: () => selectedItem(context, 10),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: buildFooter(),
                     ),
                   ],
                 ),
@@ -174,36 +176,40 @@ class NavigationDrawer extends StatelessWidget {
         ),
       );
 
-  Widget buildSearchField() {
-   return Container(
-     width: double.infinity,
-     height: 60.h,
-     color: purple2,
-         child: Row(
-           mainAxisAlignment: MainAxisAlignment.center,
-           children: [
-             Icon(Icons.person,color: Colors.white,),
-             SizedBox(width: 5,),
-             Text(
-               'تسجيل الدخول',
-               style: TextStyle(
-                   fontSize: 18,
-                   color: Colors.white),),
-           ],
-         ));
+  Widget buildLoginField() {
+    return Container(
+        width: double.infinity,
+        height: 60.h,
+        color: purple2,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 5,
+            ),
+            Text(
+              'تسجيل الدخول',
+              style: TextStyle(fontSize: 18, color: Colors.white),
+            ),
+          ],
+        ));
   }
 
   Widget buildMenuItem({
     required String text,
-    required IconData icon,
+    required String icon,
     VoidCallback? onClicked,
   }) {
     final color = Colors.white;
     final hoverColor = Colors.white70;
 
     return ListTile(
-      leading: Icon(icon, color: color),
-      title: Text(text, style: TextStyle(color: color,fontSize: 18)),
+      leading: SvgPicture.asset(icon,color: color,),
+      title: Text(text, style: TextStyle(color: color, fontSize: 18)),
       hoverColor: hoverColor,
       onTap: onClicked,
     );
@@ -238,7 +244,7 @@ class NavigationDrawer extends StatelessWidget {
           builder: (context) => TravelHotel(),
         ));
         break;
-        case 5:
+      case 5:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => BlogScreen(),
         ));
@@ -248,7 +254,7 @@ class NavigationDrawer extends StatelessWidget {
           builder: (context) => AboutUsScreen(),
         ));
         break;
-        //common questions
+      //common questions
       case 7:
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => CommonQuestionScreen(),
@@ -261,9 +267,74 @@ class NavigationDrawer extends StatelessWidget {
         break;
       case 9:
         Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CallUsScreen(),
+        ));
+        break;
+      case 10:
+        Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => ProfileScreen(),
         ));
         break;
     }
+  }
+
+  Widget buildFooter() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            border: Border.all(color: Colors.white),
+          ),
+          child: IconButton(
+              onPressed: () {},
+              icon: Image(
+                image: AssetImage('assets/images/Vector.png'),
+              )),
+        ),
+        Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            border: Border.all(color: Colors.white),
+          ),
+          child: IconButton(
+              onPressed: () {},
+              icon: Image(
+                image: AssetImage('assets/images/Group 1030.png'),
+              )),
+        ),
+        Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            border: Border.all(color: Colors.white),
+          ),
+          child: IconButton(
+              onPressed: () {},
+              icon: Image(
+                image: AssetImage('assets/images/Group 18.png'),
+              )),
+        ),
+        Container(
+          width: 48,
+          height: 48,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            border: Border.all(color: Colors.white),
+          ),
+          child: IconButton(
+              onPressed: () {},
+              icon: Image(
+                image: AssetImage('assets/images/Group 1030.png'),
+              )),
+        ),
+      ],
+    );
   }
 }
